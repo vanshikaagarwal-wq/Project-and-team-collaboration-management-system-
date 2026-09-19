@@ -65,3 +65,54 @@ body {
     text-align: center;
     margin-top: 15px;
 }
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper input {
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 45px;
+}
+
+.eye-button {
+    position: absolute !important;
+    right: 10px;
+    top: 40%;
+    transform: translateY(-50%);
+
+    width: 36px !important;
+    height: 36px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    background: transparent !important;
+    color: #555 !important;
+    border: none !important;
+    border-radius: 50% !important;
+
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.eye-button:hover {
+    background: #f0f0f0 !important;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-top: 8px;
+}
+
+.forgot-password a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
