@@ -61,6 +61,11 @@ loginForm.addEventListener("submit", async function (event) {
                 "loggedInUser",
                 JSON.stringify(users[0])
             );
+
+            // Redirect to dashboard after successful login
+            setTimeout(() => {
+                window.location.href = "dashboard.html";
+            }, 800);
         } else {
             message.textContent = "Invalid email or password.";
             message.style.color = "red";

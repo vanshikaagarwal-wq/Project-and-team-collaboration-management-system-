@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Project and Team Collaboration Management System</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/dashboard.js" defer></script>
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-brand">
+            <h2>TeamCollab</h2>
+            <span class="sub-title">Project & Team Collaboration</span>
+        </div>
+        <div class="nav-user">
+            <span id="welcomeText">Welcome, <strong id="userName">User</strong></span>
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Container -->
+    <main class="dashboard-container">
+
+        <!-- Quick Statistics Cards -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Projects</h3>
+                <p class="stat-number" id="totalProjects">3</p>
+                <span class="stat-desc">Active team projects</span>
+            </div>
+            <div class="stat-card">
+                <h3>My Tasks</h3>
+                <p class="stat-number" id="totalTasks">4</p>
+                <span class="stat-desc">Assigned to you</span>
+            </div>
+            <div class="stat-card">
+                <h3>In Progress</h3>
+                <p class="stat-number" id="inProgressTasks">2</p>
+                <span class="stat-desc">Currently working</span>
+            </div>
+            <div class="stat-card">
+                <h3>Completed</h3>
+                <p class="stat-number" id="completedTasks">2</p>
+                <span class="stat-desc">Finished tasks</span>
+            </div>
+        </section>
+
+        <!-- Main Content Area: Split into Task Form and Tasks List -->
+        <div class="content-grid">
+
+            <!-- Add New Task Card -->
+            <section class="card">
+                <h3>Create New Task</h3>
+                <form id="taskForm">
+                    <div class="form-group">
+                        <label for="taskTitle">Task Title</label>
+                        <input type="text" id="taskTitle" placeholder="e.g. Design Navbar UI" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskAssignee">Assign To</label>
+                            <input type="text" id="taskAssignee" placeholder="e.g. Vedansh" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskPriority">Priority</label>
+                            <select id="taskPriority">
+                                <option value="Low">Low</option>
+                                <option value="Medium" selected>Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskDueDate">Due Date</label>
+                            <input type="date" id="taskDueDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskStatus">Status</label>
+                            <select id="taskStatus">
+                                <option value="Pending">Pending</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="primary-btn">+ Add Task</button>
+                </form>
+            </section>
+
+            <!-- Active Team Projects Overview -->
+            <section class="card">
+                <h3>Active Projects</h3>
+                <div class="project-list">
+                    <div class="project-item">
+                        <div class="project-header">
+                            <strong>User Authentication Module</strong>
+                            <span class="badge completed">Done</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-header">
+                            <strong>Dashboard & Task Collaboration</strong>
+                            <span class="badge in-progress">In Progress</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 70%;"></div></div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-header">
+                            <strong>Team Notification & Reports</strong>
+                            <span class="badge pending">Pending</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 25%;"></div></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Task Management Table -->
+        <section class="card table-card">
+            <div class="table-header">
+                <h3>Team Tasks & Action Items</h3>
+                <span class="table-subtitle">Manage, update, and track team progress</span>
+            </div>
+            <div class="table-responsive">
+                <table class="task-table">
+                    <thead>
+                        <tr>
+                            <th>Task Title</th>
+                            <th>Assigned To</th>
+                            <th>Priority</th>
+                            <th>Due Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskTableBody">
+                        <!-- Dynamic task rows inserted via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
