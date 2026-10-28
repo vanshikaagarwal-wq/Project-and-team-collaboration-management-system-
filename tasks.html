@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management | Team Collaboration</title>
+    <link rel="stylesheet" href="tasks.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>Task Management</h1>
+        <p>Organize your work and track your progress</p>
+    </header>
+
+    <main class="container">
+        <section class="task-form">
+            <h2>Create a New Task</h2>
+
+            <form id="taskForm">
+                <input
+                    type="text"
+                    id="taskTitle"
+                    placeholder="Enter task title"
+                    required
+                >
+
+                <select id="taskPriority" required>
+                    <option value="Low">Low Priority</option>
+                    <option value="Medium" selected>Medium Priority</option>
+                    <option value="High">High Priority</option>
+                </select>
+
+                <button type="submit">Add Task</button>
+            </form>
+        </section>
+
+        <section class="task-list">
+            <h2>My Tasks</h2>
+
+            <div class="task-summary">
+                <div>Total Tasks: <span id="totalTasks">0</span></div>
+                <div>Completed: <span id="completedTasks">0</span></div>
+                <div>Pending: <span id="pendingTasks">0</span></div>
+            </div>
+
+            <div id="tasksContainer">
+                <p id="emptyMessage">No tasks yet. Add your first task!</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const taskForm = document.getElementById("taskForm");
+        const taskTitle = document.getElementById("taskTitle");
+        const taskPriority = document.getElementById("taskPriority");
+        const tasksContainer = document.getElementById("tasksContainer");
+
+        let tasks = [];
+
+        function updateSummary() {
+            const completed = tasks.filter(task => task.completed).length;
+
+            document.getElementById("totalTasks").textContent = tasks.length;
+            document.getElementById("completedTasks").textContent = completed;
+            document.getElementById("pendingTasks").textContent =
+                tasks.length - completed;
+        }
+
+        function renderTasks() {
+            tasksContainer.innerHTML = "";
+
+            if (tasks.length === 0) {
+                tasksContainer.innerHTML =
+                    '<p class="empty-message">No tasks yet. Add your first task!</p>';
+                updateSummary();
+                return;
+            }
+
+            tasks.forEach(task => {
+                const card = document.createElement("div");
+                card.className = "task-card";
+
+                if (task.completed) {
+                    card.classList.add("completed");
+                }
+
+                const title = document.createElement("h3");
+                title.textContent = task.title;
+
+                const priority = document.createElement("span");
+                priority.className =
+                    "priority " + task.priority.toLowerCase();
+                priority.textContent = task.priority + " Priority";
+
+                const actions = document.createElement("div");
+                actions.className = "task-actions";
+
+                const completeButton = document.createElement("button");
+                completeButton.textContent = task.completed
+                    ? "Undo"
+                    : "Mark Complete";
+
+                completeButton.className = "complete-btn";
+                completeButton.addEventListener("click", () => {
+                    task.completed = !task.completed;
+                    renderTasks();
+                });
+
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.className = "delete-btn";
+                deleteButton.addEventListener("click", () => {
+                    tasks = tasks.filter(item => item.id !== task.id);
+                    renderTasks();
+                });
+
+                actions.append(completeButton, deleteButton);
+                card.append(title, priority, actions);
+                tasksContainer.appendChild(card);
+            });
+
+            updateSummary();
+        }
+
+        taskForm.addEventListener("submit", event => {
+            event.preventDefault();
+
+            const title = taskTitle.value.trim();
+
+            if (!title) {
+                return;
+            }
+
+            tasks.push({
+                id: Date.now(),
+                title: title,
+                priority: taskPriority.value,
+                completed: false
+            });
+
+            taskForm.reset();
+            taskPriority.value = "Medium";
+            renderTasks();
+        });
+
+        renderTasks();
+    </script>
+
+</body>
+</html>
