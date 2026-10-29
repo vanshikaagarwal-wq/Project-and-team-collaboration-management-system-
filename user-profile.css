@@ -1,0 +1,145 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    color: #222;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.profile-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.profile-header a {
+    color: #333;
+    text-decoration: none;
+}
+
+.profile-header a:hover {
+    text-decoration: underline;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+}
+
+.profile-card {
+    width: 100%;
+    max-width: 520px;
+    padding: 32px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: #e8edf5;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.profile-card h2,
+#profileRole {
+    text-align: center;
+}
+
+.profile-card h2 {
+    margin-bottom: 8px;
+}
+
+#profileRole {
+    color: #666;
+    margin-bottom: 28px;
+}
+
+.profile-details {
+    display: grid;
+    gap: 18px;
+}
+
+.detail label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.detail input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.detail input:focus {
+    outline: 2px solid #9bb8e8;
+    outline-offset: 1px;
+}
+
+button {
+    padding: 11px 16px;
+    margin-top: 18px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #555;
+}
+
+button[hidden] {
+    display: none;
+}
+
+#cancelButton {
+    margin-left: 8px;
+    background: #fff;
+    color: #333;
+}
+
+#message {
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+@media (max-width: 480px) {
+    .profile-header {
+        padding: 16px;
+    }
+
+    .profile-header h1 {
+        font-size: 20px;
+    }
+
+    .profile-card {
+        padding: 22px;
+    }
+}
