@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile | Project and Team Collaboration Management System</title>
+    <link rel="stylesheet" href="user-profile.css">
+    <script src="user-profile.js" defer></script>
+</head>
+<body>
+    <header class="profile-header">
+        <h1>User Profile</h1>
+        <a href="login.html">Back to Login</a>
+    </header>
+
+    <main class="profile-container">
+        <section class="profile-card">
+            <div class="avatar" aria-hidden="true">U</div>
+
+            <h2 id="profileName">Loading profile...</h2>
+            <p id="profileRole">Member</p>
+
+            <div class="profile-details">
+                <div class="detail">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your name">
+                </div>
+
+                <div class="detail">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" readonly>
+                </div>
+            </div>
+
+            <button type="button" id="editButton">Edit Profile</button>
+            <button type="button" id="saveButton" hidden>Save Changes</button>
+            <button type="button" id="cancelButton" hidden>Cancel</button>
+
+            <p id="message" role="status" aria-live="polite"></p>
+        </section>
+    </main>
+</body>
+</html>
