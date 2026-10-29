@@ -42,32 +42,44 @@ togglePassword.addEventListener("click", function () {
 // Login
 loginForm.addEventListener("submit", async function (event) {
     event.preventDefault();
+    const loginButton = loginForm.querySelector('button[type="submit"]');
+loginButton.disabled = true;
 
     const email = document.getElementById("email").value.trim();
     const password = passwordInput.value;
 
     try {
-        const response = await fetch(
-            `/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
-        );
+       const response = await fetch(
+    `/users?email=${encodeURIComponent(email)}`
+);
 
-        const users = await response.json();
+if (!response.ok) {
+    throw new Error("Unable to fetch users");
+}
 
-        if (users.length > 0) {
+const users = await response.json();
+
+const matchedUser = users.find(
+    user => user.password === password
+);
+
+if (matchedUser) {
             message.textContent = "Login successful!";
             message.style.color = "green";
 
             localStorage.setItem(
                 "loggedInUser",
-                JSON.stringify(users[0])
+                JSON.stringify(matchedUser)
             );
         } else {
             message.textContent = "Invalid email or password.";
             message.style.color = "red";
         }
-    } catch (error) {
+        } catch (error) {
         message.textContent = "Unable to connect to the server.";
         message.style.color = "red";
         console.error(error);
+    } finally {
+        loginButton.disabled = false;
     }
 });
