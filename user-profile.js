@@ -93,6 +93,7 @@ saveButton.addEventListener("click", async () => {
         displayProfile();
         setEditing(false);
         message.textContent = "Profile saved successfully!";
+        console.log("User profile updated successfully.");
     } catch (error) {
         message.textContent = "Could not save changes. Try again.";
         console.error(error);
