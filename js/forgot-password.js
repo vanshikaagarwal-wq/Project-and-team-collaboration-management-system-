@@ -84,11 +84,15 @@ forgotPasswordForm.addEventListener("submit", async function (event) {
 
     try {
         // Find user by email
-        const response = await fetch(
-            `/users?email=${encodeURIComponent(email)}`
-        );
+       const response = await fetch(
+    `/users?email=${encodeURIComponent(email)}`
+);
 
-        const users = await response.json();
+if (!response.ok) {
+    throw new Error("Unable to find user.");
+}
+
+const users = await response.json();
 
         if (users.length === 0) {
             message.textContent = "Email not registered.";
