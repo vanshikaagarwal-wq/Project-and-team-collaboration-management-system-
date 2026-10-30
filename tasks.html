@@ -44,6 +44,29 @@
                 <div>Pending: <span id="pendingTasks">0</span></div>
             </div>
 
+            <!-- Search and Filter -->
+            <div class="task-filters">
+                <input
+                    type="search"
+                    id="searchTask"
+                    placeholder="Search tasks..."
+                    aria-label="Search tasks"
+                >
+
+                <select id="statusFilter" aria-label="Filter by status">
+                    <option value="All">All Tasks</option>
+                    <option value="Pending">Pending Tasks</option>
+                    <option value="Completed">Completed Tasks</option>
+                </select>
+
+                <select id="priorityFilter" aria-label="Filter by priority">
+                    <option value="All">All Priorities</option>
+                    <option value="Low">Low Priority</option>
+                    <option value="Medium">Medium Priority</option>
+                    <option value="High">High Priority</option>
+                </select>
+            </div>
+
             <div id="tasksContainer">
                 <p id="emptyMessage">No tasks yet. Add your first task!</p>
             </div>
@@ -55,6 +78,10 @@
         const taskTitle = document.getElementById("taskTitle");
         const taskPriority = document.getElementById("taskPriority");
         const tasksContainer = document.getElementById("tasksContainer");
+
+        const searchTask = document.getElementById("searchTask");
+        const statusFilter = document.getElementById("statusFilter");
+        const priorityFilter = document.getElementById("priorityFilter");
 
         let tasks = [];
 
@@ -70,14 +97,44 @@
         function renderTasks() {
             tasksContainer.innerHTML = "";
 
+            // No tasks have been created
             if (tasks.length === 0) {
                 tasksContainer.innerHTML =
                     '<p class="empty-message">No tasks yet. Add your first task!</p>';
+
                 updateSummary();
                 return;
             }
 
-            tasks.forEach(task => {
+            // Apply search and filters
+            const searchText = searchTask.value.trim().toLowerCase();
+
+            const filteredTasks = tasks.filter(task => {
+                const matchesSearch =
+                    task.title.toLowerCase().includes(searchText);
+
+                const matchesStatus =
+                    statusFilter.value === "All" ||
+                    (statusFilter.value === "Completed" && task.completed) ||
+                    (statusFilter.value === "Pending" && !task.completed);
+
+                const matchesPriority =
+                    priorityFilter.value === "All" ||
+                    task.priority === priorityFilter.value;
+
+                return matchesSearch && matchesStatus && matchesPriority;
+            });
+
+            // No matching tasks
+            if (filteredTasks.length === 0) {
+                tasksContainer.innerHTML =
+                    '<p class="empty-message">No matching tasks found.</p>';
+
+                updateSummary();
+                return;
+            }
+
+            filteredTasks.forEach(task => {
                 const card = document.createElement("div");
                 card.className = "task-card";
 
@@ -91,25 +148,32 @@
                 const priority = document.createElement("span");
                 priority.className =
                     "priority " + task.priority.toLowerCase();
+
                 priority.textContent = task.priority + " Priority";
 
                 const actions = document.createElement("div");
                 actions.className = "task-actions";
 
+                // Complete or undo task
                 const completeButton = document.createElement("button");
+
                 completeButton.textContent = task.completed
                     ? "Undo"
                     : "Mark Complete";
 
                 completeButton.className = "complete-btn";
+
                 completeButton.addEventListener("click", () => {
                     task.completed = !task.completed;
                     renderTasks();
                 });
 
+                // Delete task
                 const deleteButton = document.createElement("button");
+
                 deleteButton.textContent = "Delete";
                 deleteButton.className = "delete-btn";
+
                 deleteButton.addEventListener("click", () => {
                     tasks = tasks.filter(item => item.id !== task.id);
                     renderTasks();
@@ -123,6 +187,7 @@
             updateSummary();
         }
 
+        // Add a new task
         taskForm.addEventListener("submit", event => {
             event.preventDefault();
 
@@ -141,9 +206,20 @@
 
             taskForm.reset();
             taskPriority.value = "Medium";
+
             renderTasks();
         });
 
+        // Search as the user types
+        searchTask.addEventListener("input", renderTasks);
+
+        // Filter by status
+        statusFilter.addEventListener("change", renderTasks);
+
+        // Filter by priority
+        priorityFilter.addEventListener("change", renderTasks);
+
+        // Initial display
         renderTasks();
     </script>
 
