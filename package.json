@@ -1,0 +1,1 @@
+{"name":"project-team-collab","version":"1.0.0","scripts":{"start":"json-server --watch data/db.json --port 3000 --static ."},"dependencies":{"json-server":"0.17.4"}}
