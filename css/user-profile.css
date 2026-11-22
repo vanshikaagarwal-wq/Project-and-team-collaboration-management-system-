@@ -1,0 +1,404 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f4f6f8;
+    color: #1e293b;
+}
+
+/* Navigation Bar */
+.navbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 19px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.brand-icon {
+    color: #2563eb;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #4b5563;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #111827;
+    background: #f1f5f9;
+}
+
+.nav-link.active {
+    color: #2563eb;
+    background: #eff6ff;
+    font-weight: 600;
+}
+
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.user-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #1f2937;
+    padding: 4px 10px 4px 4px;
+    border-radius: 30px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    transition: background 0.2s;
+}
+
+.user-pill:hover, .user-pill.active {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #e2e8f0;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid #d1d5db;
+    color: #4b5563;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: #fee2e2;
+    border-color: #fca5a5;
+    color: #dc2626;
+}
+
+/* Profile Container */
+.profile-container {
+    max-width: 1200px;
+    margin: 24px auto;
+    padding: 0 20px 40px;
+}
+
+/* Profile Hero Card */
+.profile-hero-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+}
+
+.profile-hero-main {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.profile-hero-img {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #eff6ff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.profile-hero-info {
+    flex: 1;
+}
+
+.profile-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.profile-title-row h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.role-badge {
+    background: #eff6ff;
+    color: #2563eb;
+    border: 1px solid #bfdbfe;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.hero-title {
+    font-size: 15px;
+    color: #64748b;
+    margin-bottom: 12px;
+}
+
+.hero-meta-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.hero-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #475569;
+}
+
+/* Grid Layout */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1.2fr;
+    gap: 24px;
+}
+
+.profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Cards */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.card-header {
+    padding: 20px 24px 14px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.card-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+}
+
+.card-caption {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.card-link {
+    font-size: 13px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+/* Forms */
+.profile-form {
+    padding: 20px 24px 28px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #1e293b;
+    background: #ffffff;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group input[readonly] {
+    background: #f8fafc;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+.btn {
+    padding: 11px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: #222222;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: #444444;
+}
+
+.btn-secondary {
+    background: #334155;
+    color: #ffffff;
+}
+
+.btn-secondary:hover {
+    background: #1e293b;
+}
+
+.form-message {
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* My Tasks List */
+.my-tasks-list {
+    padding: 12px 20px 20px;
+}
+
+.task-mini-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-mini-item:last-child {
+    border-bottom: none;
+}
+
+.task-mini-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.badge {
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.badge-in-progress { background: #dbeafe; color: #1e40af; }
+.badge-completed { background: #d1fae5; color: #065f46; }
+.badge-to-do { background: #f1f5f9; color: #475569; }
+
+.empty-state {
+    padding: 18px 0;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .profile-hero-main {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-meta-items {
+        justify-content: center;
+    }
+    .profile-title-row {
+        justify-content: center;
+    }
+}

@@ -117,12 +117,38 @@ const users = await response.json();
             throw new Error("Password update failed.");
         }
 
+        // Also sync local storage
+        const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+        const idx = localUsers.findIndex(u => u.email.toLowerCase() === email.toLowerCase());
+        if (idx !== -1) {
+            localUsers[idx].password = newPassword;
+            localStorage.setItem("users", JSON.stringify(localUsers));
+        }
+
         message.textContent = "Password reset successful!";
         message.style.color = "green";
 
         forgotPasswordForm.reset();
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 1200);
 
     } catch (error) {
+        // Fallback for offline mode
+        const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+        const idx = localUsers.findIndex(u => u.email.toLowerCase() === email.toLowerCase());
+        if (idx !== -1) {
+            localUsers[idx].password = newPassword;
+            localStorage.setItem("users", JSON.stringify(localUsers));
+            message.textContent = "Password reset successful!";
+            message.style.color = "green";
+            forgotPasswordForm.reset();
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 1200);
+            return;
+        }
+
         message.textContent = "Unable to reset password. Please try again.";
         message.style.color = "red";
         console.error(error);

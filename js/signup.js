@@ -48,14 +48,46 @@ signupForm.addEventListener("submit", async function (event) {
             throw new Error("Registration failed.");
         }
 
+        // Also sync local storage
+        const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+        localUsers.push({
+            id: String(Date.now()),
+            name: name,
+            email: email,
+            password: password,
+            role: "member"
+        });
+        localStorage.setItem("users", JSON.stringify(localUsers));
+
         message.textContent = "Registration successful!";
         message.style.color = "green";
 
         signupForm.reset();
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 1200);
 
     } catch (error) {
-        message.textContent = "Unable to register. Please try again.";
-        message.style.color = "red";
-        console.error(error);
+        // Fallback for offline mode
+        const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+        if (localUsers.some(u => u.email.toLowerCase() === email.toLowerCase())) {
+            message.textContent = "Email already registered.";
+            message.style.color = "red";
+            return;
+        }
+        localUsers.push({
+            id: String(Date.now()),
+            name: name,
+            email: email,
+            password: password,
+            role: "member"
+        });
+        localStorage.setItem("users", JSON.stringify(localUsers));
+        message.textContent = "Registration successful!";
+        message.style.color = "green";
+        signupForm.reset();
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 1200);
     }
 });

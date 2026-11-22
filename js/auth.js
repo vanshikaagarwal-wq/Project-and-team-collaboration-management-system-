@@ -71,15 +71,33 @@ if (matchedUser) {
                 "loggedInUser",
                 JSON.stringify(matchedUser)
             );
+
+            setTimeout(() => {
+                window.location.href = "dashboard.html";
+            }, 800);
         } else {
             message.textContent = "Invalid email or password.";
             message.style.color = "red";
         }
         } catch (error) {
-        message.textContent = "Unable to connect to the server.";
-        message.style.color = "red";
-        console.error(error);
-    } finally {
+            // Check fallback in localStorage if server is offline
+            const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+            const matchedLocal = localUsers.find(
+                u => u.email.toLowerCase() === email.toLowerCase() && u.password === password
+            );
+            if (matchedLocal) {
+                message.textContent = "Login successful!";
+                message.style.color = "green";
+                localStorage.setItem("loggedInUser", JSON.stringify(matchedLocal));
+                setTimeout(() => {
+                    window.location.href = "dashboard.html";
+                }, 800);
+            } else {
+                message.textContent = "Unable to connect to the server.";
+                message.style.color = "red";
+                console.error(error);
+            }
+        } finally {
         loginButton.disabled = false;
     }
 });
