@@ -1,0 +1,95 @@
+{
+ "users": [
+  {
+   "id": 1,
+   "name": "Vanshika Agrawal",
+   "email": "admin@test.com",
+   "password": "123456",
+   "role": "Admin",
+   "answer": "blue"
+  },
+  {
+   "id": 2,
+   "name": "Vedansh Gupta",
+   "email": "vedansh@test.com",
+   "password": "123456",
+   "role": "Manager",
+   "answer": "blue"
+  },
+  {
+   "id": 3,
+   "name": "Yuvraj Singh",
+   "email": "yuvraj@test.com",
+   "password": "123456",
+   "role": "Member",
+   "answer": "blue"
+  },
+  {
+   "id": 4,
+   "name": "Yuvraj Thakur",
+   "email": "yuvraj.thakur@test.com",
+   "password": "123456",
+   "role": "Member",
+   "answer": "blue"
+  }
+ ],
+ "projects": [
+  {
+   "id": 1,
+   "title": "Website Redesign",
+   "description": "New company site",
+   "deadline": "2026-12-30",
+   "status": "Active",
+   "ownerId": 1,
+   "members": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "open": false
+  },
+  {
+   "id": 2,
+   "title": "Mobile App",
+   "description": "Need frontend help",
+   "deadline": "2027-01-15",
+   "status": "Planning",
+   "ownerId": 2,
+   "members": [
+    2
+   ],
+   "open": true
+  }
+ ],
+ "tasks": [
+  {
+   "id": 1,
+   "title": "Design homepage",
+   "projectId": 1,
+   "assignee": 3,
+   "priority": "High",
+   "status": "Todo"
+  },
+  {
+   "id": 2,
+   "title": "Setup database",
+   "projectId": 1,
+   "assignee": 2,
+   "priority": "Medium",
+   "status": "In Progress"
+  }
+ ],
+ "comments": [
+  {
+   "id": 1,
+   "userId": 1,
+   "text": "Welcome to the team!",
+   "date": "2026-11-22"
+  }
+ ],
+ "requests": [],
+ "notifications": [],
+ "activities": [],
+ "discussions": []
+}
