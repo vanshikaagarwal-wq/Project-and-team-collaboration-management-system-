@@ -1,1 +1,9 @@
-.stat{text-align:center}.stat h1{margin:0;color:#4338ca;font-size:36px}
+.stat {
+  text-align: left;
+}
+
+.stat h1 {
+  margin: 0 0 4px;
+  color: var(--teal-dark);
+  font-size: 40px;
+}

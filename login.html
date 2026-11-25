@@ -1,2 +1,30 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><title>Login</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=css/style.css><link rel=stylesheet href=css/auth.css></head>
-<body><div class="card box"><h2>Login</h2><input id=email placeholder=Email><input id=password type=password placeholder=Password><p id=msg></p><button onclick=login()>Login</button><p><a href=forgot-password.html>Forgot password?</a></p><p>New user? <a href=signup.html>Sign up</a></p></div><script src=js/common.js></script><script src=js/auth.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Log in | TeamCollab</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+  </head>
+  <body class="auth">
+    <aside class="auth-side">
+      <a class="brand" href="index.html">TeamCollab</a>
+      <h1>Pick up where your team left off.</h1>
+      <p>See your projects, tasks and team messages in one place.</p>
+    </aside>
+    <section class="auth-main">
+      <div class="auth-form">
+        <h2>Log in</h2>
+        <p class="muted">Use the email you signed up with.</p>
+        <input id="email" type="email" placeholder="Email" autocomplete="username" />
+        <input id="password" type="password" placeholder="Password" autocomplete="current-password" />
+        <p id="msg"></p>
+        <button onclick="login()">Log in</button>
+        <p class="auth-links"><a href="forgot-password.html">Forgot password?</a><br />New here? <a href="signup.html">Create an account</a></p>
+      </div>
+    </section>
+    <script src="js/common.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>

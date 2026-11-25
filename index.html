@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TeamCollab | Project and team collaboration</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+  <body>
+    <header class="top">
+      <a class="logo" href="index.html">TeamCollab</a>
+      <a href="login.html">Log in</a>
+      <a class="btn" href="signup.html">Create account</a>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1>One board for your whole team</h1>
+        <p>
+          Plan projects, split the work and talk it through in one place. New members join a team
+          only when its owner says yes.
+        </p>
+        <div class="cta" id="cta">
+          <a class="btn" href="signup.html">Create account</a>
+          <a class="btn ghost" href="login.html">Log in</a>
+        </div>
+      </div>
+      <div class="mock" aria-label="Example task board">
+        <div>
+          <h4>Todo</h4>
+          <div class="bt">Write report<small>Due Friday</small></div>
+          <div class="bt">Design homepage</div>
+        </div>
+        <div>
+          <h4>In progress</h4>
+          <div class="bt">Set up database<span class="av">V</span></div>
+        </div>
+        <div>
+          <h4>Done</h4>
+          <div class="bt done">Login page<span class="av">Y</span></div>
+          <div class="bt done">Project plan</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>What your team gets</h2>
+      <dl class="feat">
+        <div>
+          <dt>Projects with progress</dt>
+          <dd>Create a project, set a deadline and watch the bar fill as tasks are done.</dd>
+        </div>
+        <div>
+          <dt>Task board</dt>
+          <dd>Assign tasks, set priority and due dates, and move them from Todo to Done.</dd>
+        </div>
+        <div>
+          <dt>Join by request</dt>
+          <dd>Open projects show up in Explore. The owner approves who joins.</dd>
+        </div>
+        <div>
+          <dt>Team discussion</dt>
+          <dd>Talk inside the project and mention a teammate with @name.</dd>
+        </div>
+        <div>
+          <dt>Notifications</dt>
+          <dd>Know when a task is assigned, a request arrives or someone mentions you.</dd>
+        </div>
+        <div>
+          <dt>Activity feed</dt>
+          <dd>See who added, moved or finished what, without asking around.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="sec">
+      <h2>How joining a team works</h2>
+      <ol class="steps">
+        <li><strong>1</strong>Create your account. You start with no projects.</li>
+        <li><strong>2</strong>Find an open project in Explore and send a request.</li>
+        <li><strong>3</strong>The owner approves, and the project appears in your list.</li>
+      </ol>
+    </section>
+
+    <footer class="foot">
+      Built by Vanshika Agrawal, Vedansh Gupta, Yuvraj Singh and Yuvraj Thakur.
+    </footer>
+
+    <script>
+      try {
+        if (localStorage.getItem("user")) {
+          document.getElementById("cta").innerHTML =
+            '<a class="btn" href="dashboard.html">Go to dashboard</a>';
+        }
+      } catch (e) {}
+    </script>
+  </body>
+</html>
